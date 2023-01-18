@@ -4,8 +4,8 @@ import App from "./App";
 // import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Astronauts, { loader as astronautsLoader } from "./routes/Astronauts";
 import AstronautsForm from "./components/AstronautsForm";
+import Astronauts, { loader as astronautsLoader } from "./routes/Astronauts";
 import CreateAstronaut from "./routes/CreateAstronaut";
 import EditAstronaut, {
   loader as editAstronautLoader,

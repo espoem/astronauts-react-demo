@@ -6,13 +6,12 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Dayjs } from "dayjs";
 import * as dayjs from "dayjs";
-import React, { useEffect } from "react";
-import { SUPERPOWERS } from "../lib";
+import { Dayjs } from "dayjs";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { SUPERPOWERS } from "../lib";
 import { Astronaut, Superpower } from "../types";
-import { Form } from "react-router-dom";
 
 const superpowers = ["Flying", "Walking on the Moon", "Super Hearing"];
 

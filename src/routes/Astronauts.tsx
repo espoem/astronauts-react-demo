@@ -1,12 +1,8 @@
 import AddIcon from "@mui/icons-material/Add";
-import Backdrop from "@mui/material/Backdrop";
 import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import AstronautTable from "../components/AstronautsTable";
-import { useFetchAtronauts } from "../hooks";
 import { Astronaut } from "../types";
-import { useLoaderData } from "react-router-dom";
 
 export async function loader(): Promise<Astronaut[]> {
   const response = await fetch(
