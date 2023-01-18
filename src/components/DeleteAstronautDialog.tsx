@@ -33,7 +33,7 @@ export default function DeleteAstronautDialog({
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={onDelete} autoFocus>
+        <Button onClick={onDelete} autoFocus variant="contained" color="error">
           Agree
         </Button>
       </DialogActions>
