@@ -20,7 +20,7 @@ export const useFetchAtronauts = (url: string): FetchData => {
         const data = await response.json();
         setData(data);
       } catch (err) {
-        setError(new Error(err));
+        setError(new Error("Could not load data", { cause: err }));
       } finally {
         setLoading(false);
       }
