@@ -1,0 +1,42 @@
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
+
+type DeleteAstronautDialogProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onDelete: () => void;
+};
+
+export default function DeleteAstronautDialog({
+  isOpen,
+  onClose,
+  onDelete,
+}: DeleteAstronautDialogProps) {
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">
+        {"Delete this astronaut?"}
+      </DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          Do you really want to delete this astronaut?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onDelete} autoFocus>
+          Agree
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
