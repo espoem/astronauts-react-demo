@@ -29,25 +29,32 @@ export default function AstronautsForm({ astronaut }: AstronautFormProps) {
   const [birthdate, setBirthdate] = React.useState<Dayjs | null>(
     astronaut?.birthdate ? dayjs(astronaut?.birthdate) : null
   );
-  const [selectedPowers, setSelectedPowers] = React.useState<string[]>([]);
+  let initSuperpowers = astronaut?.superpowers || [];
+  const [selectedPowers, setSelectedPowers] = React.useState<string[]>(
+    initSuperpowers.map((sp) => sp.name)
+  );
   const navigate = useNavigate();
 
-  let initSuperpowers = astronaut?.superpowers || [];
-
   let newSuperpowers = React.useMemo(() => {
-    selectedPowers.filter((sp) => {
-      return !initSuperpowers.find((isp) => isp.name === sp);
-    }) ?? [];
+    return (
+      selectedPowers.filter((sp) => {
+        return !initSuperpowers.find((isp) => isp.name === sp);
+      }) ?? []
+    );
   }, [selectedPowers]);
   let deletedSuperpowers = React.useMemo(() => {
-    initSuperpowers.filter((sp) => {
-      return !selectedPowers.find((isp) => isp === sp.name);
-    }) ?? [];
+    return (
+      initSuperpowers.filter((sp) => {
+        return !selectedPowers.find((isp) => isp === sp.name);
+      }) ?? []
+    );
   }, [selectedPowers]);
   let updatedSuperpowers = React.useMemo(() => {
-    initSuperpowers.filter((sp) => {
-      return selectedPowers.find((isp) => isp === sp.name);
-    }) ?? [];
+    return (
+      initSuperpowers.filter((sp) => {
+        return selectedPowers.find((isp) => isp === sp.name);
+      }) ?? []
+    );
   }, [selectedPowers]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -83,7 +90,11 @@ export default function AstronautsForm({ astronaut }: AstronautFormProps) {
           name,
           surname,
           birthdate: birthdate?.toISOString().split("T")[0],
-          superpowers: selectedPowers.map((sp) => ({ name: sp })),
+          superpowers: [
+            ...deletedSuperpowers.map((sp) => ({ id: sp.id, name: "" })),
+            ...newSuperpowers.map((sp) => ({ name: sp })),
+            ...updatedSuperpowers.map((sp) => ({ id: sp.id, name: sp.name })),
+          ],
         }),
       }
     );
