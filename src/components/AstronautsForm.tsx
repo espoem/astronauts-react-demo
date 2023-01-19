@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs/esm/index.js";
 import { Dayjs } from "dayjs";
 import React from "react";
 import { useNavigate } from "react-router-dom";
