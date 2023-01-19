@@ -22,23 +22,6 @@ const router = createBrowserRouter([
         loader: astronautsLoader,
       },
       {
-        path: "test",
-        element: (
-          <AstronautsForm
-            astronaut={{
-              id: 1,
-              name: "martin",
-              surname: "test",
-              birthdate: "2022-10-12",
-              superpowers: [
-                { id: 1, name: "super strength" },
-                { id: 2, name: "super hearing" },
-              ],
-            }}
-          />
-        ),
-      },
-      {
         path: "astronauts/create",
         element: <CreateAstronaut />,
       },
