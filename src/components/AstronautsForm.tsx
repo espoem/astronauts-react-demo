@@ -1,9 +1,9 @@
 import Autocomplete, {
   AutocompleteRenderInputParams,
 } from "@mui/material/Autocomplete";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
 import * as dayjs from "dayjs";
@@ -104,10 +104,10 @@ export default function AstronautsForm({ astronaut }: AstronautFormProps) {
 
   return (
     <>
-      <Box
+      <Paper
         component="form"
         onSubmit={handleSubmit}
-        sx={{ flexGrow: 1, "& > :not(:first-of-type)": { mt: 0 } }}
+        sx={{ flexGrow: 1, "& > :not(:first-of-type)": { mt: 0 }, padding: 3 }}
       >
         <Grid container columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
           <Grid item xs={1}>
@@ -195,7 +195,7 @@ export default function AstronautsForm({ astronaut }: AstronautFormProps) {
             </Button>
           </Grid>
         </Grid>
-      </Box>
+      </Paper>
     </>
   );
 }
