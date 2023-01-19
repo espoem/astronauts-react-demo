@@ -153,6 +153,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
             key={headCell.id}
             align={headCell.numeric ? "right" : "left"}
             sortDirection={orderBy === headCell.id ? order : false}
+            sx={{ minWidth: headCell.id !== "actions" ? "12ch" : null }}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -267,12 +268,12 @@ export default function EnhancedTable({ astronauts }: TableProps) {
 
                     return (
                       <TableRow hover tabIndex={-1} key={`ast-${row.id}`}>
-                        <TableCell align="right">{row.name}</TableCell>
-                        <TableCell align="right">{row.surname}</TableCell>
-                        <TableCell align="right">
+                        <TableCell align="left">{row.name}</TableCell>
+                        <TableCell align="left">{row.surname}</TableCell>
+                        <TableCell align="left">
                           {dateFormatter.format(new Date(row.birthdate))}
                         </TableCell>
-                        <TableCell align="right">
+                        <TableCell align="left">
                           {row.superpowers?.length > 0 && (
                             <Paper
                               sx={{
@@ -285,6 +286,7 @@ export default function EnhancedTable({ astronauts }: TableProps) {
                                 gap: "8px",
                               }}
                               component="ul"
+                              elevation={0}
                             >
                               {row.superpowers?.map(([id, name], idx) => {
                                 return (
@@ -299,23 +301,27 @@ export default function EnhancedTable({ astronauts }: TableProps) {
                           )}
                         </TableCell>
                         <TableCell>
-                          <IconButton
-                            color="default"
-                            onClick={() =>
-                              navigate(`/astronauts/${row.id}/edit`)
-                            }
-                          >
-                            <EditIcon />
-                          </IconButton>
-                          <IconButton
-                            color="error"
-                            onClick={() => {
-                              setAstronautToDelete(row.id);
-                              setModalOpen(true);
-                            }}
-                          >
-                            <DeleteIcon />
-                          </IconButton>
+                          <div style={{ display: "flex" }}>
+                            <IconButton
+                              color="default"
+                              onClick={() =>
+                                navigate(`/astronauts/${row.id}/edit`)
+                              }
+                              size="small"
+                            >
+                              <EditIcon />
+                            </IconButton>
+                            <IconButton
+                              size="small"
+                              color="error"
+                              onClick={() => {
+                                setAstronautToDelete(row.id);
+                                setModalOpen(true);
+                              }}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </div>
                         </TableCell>
                       </TableRow>
                     );
